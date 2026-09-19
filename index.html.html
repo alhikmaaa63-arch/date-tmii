@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Date Invitation for Fazril & Hikma 💌</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastelPink: '#FFD1DC',
+                        pastelRose: '#FFB7C5',
+                        pastelSage: '#C1E1C1',
+                        pastelGreen: '#A8E6CF',
+                        pastelCream: '#FFF9EC',
+                        pastelYellow: '#FFE5B4',
+                        pastelPurple: '#E8DFF5',
+                        textDark: '#4A3E3D'
+                    },
+                    fontFamily: {
+                        fredoka: ['"Fredoka One"', 'cursive'],
+                        quicksand: ['"Quicksand"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #FFF9EC;
+            color: #4A3E3D;
+            overflow-x: hidden;
+        }
+
+        .heading-font {
+            font-family: 'Fredoka One', cursive;
+        }
+
+        /* Floating background elements */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-item {
+            position: absolute;
+            animation: floatUp linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Card and Button Styles */
+        .cute-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            border: 3px solid #FFD1DC;
+            box-shadow: 0 10px 25px -5px rgba(255, 183, 197, 0.4);
+        }
+
+        .cute-button {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 0px #FFB7C5;
+        }
+
+        .cute-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0px #FFB7C5;
+        }
+
+        .cute-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 0px 0px #FFB7C5;
+        }
+
+        .pulse-subtle {
+            animation: pulseSlow 3s infinite;
+        }
+
+        @keyframes pulseSlow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative pb-16">
+
+    <!-- Floating Background Particles -->
+    <div class="floating-bg" id="floatingBg"></div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="max-w-md mx-auto px-4 pt-6 relative z-10">
+
+        <!-- MUSIC TOGGLE BAR -->
+        <div class="flex justify-between items-center bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-full border-2 border-pastelRose mb-6 shadow-sm">
+            <div class="flex items-center gap-2">
+                <span class="text-xl animate-bounce">🎵</span>
+                <span class="text-xs font-bold text-gray-600">Lo-Fi Date Vibe</span>
+            </div>
+            <button id="musicBtn" onclick="toggleAudio()" class="px-3 py-1 bg-pastelRose text-white font-bold rounded-full text-xs shadow hover:bg-pink-400 transition flex items-center gap-1">
+                <span>▶️ Play Vibe</span>
+            </button>
+        </div>
+
+        <!-- HEADER CARD -->
+        <div class="cute-card rounded-3xl p-6 text-center mb-6 relative overflow-hidden pulse-subtle">
+            <div class="absolute -top-6 -right-6 w-20 h-20 bg-pastelYellow rounded-full blur-xl opacity-60"></div>
+            <div class="absolute -bottom-6 -left-6 w-20 h-20 bg-pastelPink rounded-full blur-xl opacity-60"></div>
+
+            <span class="inline-block px-3 py-1 bg-pastelRose/20 text-pink-600 text-xs font-bold rounded-full mb-3 tracking-wide uppercase border border-pastelRose">
+                Special Date Invitation
+            </span>
+
+            <h1 class="heading-font text-2xl md:text-3xl text-pink-500 mb-2 leading-tight">
+                Romantic Date Invitation for Fazril & Hikma 💕
+            </h1>
+
+            <div class="flex justify-center items-center gap-2 my-4">
+                <div class="bg-pastelPink/40 px-3 py-1.5 rounded-2xl text-xs font-bold">
+                    To: <span class="text-pink-600 font-extrabold">Fazril 💌</span>
+                </div>
+                <span class="text-xs text-pink-400">❤</span>
+                <div class="bg-pastelGreen/40 px-3 py-1.5 rounded-2xl text-xs font-bold">
+                    From: <span class="text-emerald-700 font-extrabold">Hikma 💖</span>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-600 italic mt-2">
+                "Makan bekal spesial dulu di piknik santai, baru kita gowes keliling TMII pas sore adem! 🧺🚲"
+            </p>
+        </div>
+
+        <!-- QUICK INFO CARDS -->
+        <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="bg-white/90 border-2 border-pastelYellow p-3.5 rounded-2xl text-center shadow-sm">
+                <div class="text-2xl mb-1">📍</div>
+                <div class="text-[10px] text-gray-400 font-bold uppercase">Lokasi</div>
+                <div class="text-xs font-bold text-gray-800">TMII (Taman Mini)</div>
+            </div>
+            <div class="bg-white/90 border-2 border-pastelGreen p-3.5 rounded-2xl text-center shadow-sm">
+                <div class="text-2xl mb-1">⏰</div>
+                <div class="text-[10px] text-gray-400 font-bold uppercase">Waktu</div>
+                <div class="text-xs font-bold text-gray-800">Hari Minggu, 13.00 WIB</div>
+            </div>
+        </div>
+
+        <!-- SPECIAL BENTO MENU BUTTON -->
+        <div class="mb-6">
+            <button onclick="openMenuModal()" class="w-full cute-button bg-pastelYellow border-2 border-amber-300 p-4 rounded-2xl flex items-center justify-between text-left group">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl group-hover:scale-125 transition-transform">🍱</span>
+                    <div>
+                        <div class="text-[10px] font-bold text-amber-700 uppercase tracking-wider">Special Chef Menu</div>
+                        <div class="text-xs font-bold text-gray-800">Intip Menu Bekal Piknik 😋</div>
+                    </div>
+                </div>
+                <span class="text-[11px] bg-white px-2.5 py-1 rounded-full border border-amber-200 font-bold text-amber-600">Buka Menu 👇</span>
+            </button>
+        </div>
+
+        <!-- REVISED INTERACTIVE TIMELINE / RUNDOWN -->
+        <div class="cute-card rounded-3xl p-5 mb-6">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="text-xl">🗓️</span>
+                <h2 class="heading-font text-lg text-gray-800">Rundown Kencan</h2>
+            </div>
+
+            <div class="relative border-l-2 border-dashed border-pastelRose ml-4 space-y-5">
+
+                <!-- Item 1 -->
+                <div class="relative pl-6">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-pastelPink border-2 border-white rounded-full flex items-center justify-center text-xs">
+                        🚗
+                    </div>
+                    <div class="text-xs font-bold text-pink-500">13.00 - 14.00 WIB</div>
+                    <div class="text-xs font-bold text-gray-800">Jalan santai ajaa abis dzuhur biar ga buru buru</div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative pl-6">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-pastelYellow border-2 border-white rounded-full flex items-center justify-center text-xs">
+                        🎟️
+                    </div>
+                    <div class="text-xs font-bold text-amber-600">14.00 - 14.15 WIB</div>
+                    <div class="text-xs font-bold text-gray-800">Fazril & Hikma otw TMII & cari spot adem</div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative pl-6">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-pastelGreen border-2 border-white rounded-full flex items-center justify-center text-xs">
+                        🧺
+                    </div>
+                    <div class="text-xs font-bold text-emerald-600">14.15 - 15.15 WIB</div>
+                    <div class="text-xs font-bold text-gray-800">Picnic Time! Gelar tikar & makan bekal spesial</div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="relative pl-6">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-pastelPurple border-2 border-white rounded-full flex items-center justify-center text-xs">
+                        🕌
+                    </div>
+                    <div class="text-xs font-bold text-purple-600">15.15 - 15.45 WIB</div>
+                    <div class="text-xs font-bold text-gray-800">Istirahat, nurunin makanan & Salat Asar</div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="relative pl-6">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-pastelRose border-2 border-white rounded-full flex items-center justify-center text-xs">
+                        🚲
+                    </div>
+                    <div class="text-xs font-bold text-pink-600">15.45 - 17.45 WIB</div>
+                    <div class="text-xs font-bold text-gray-800">Start Gowes 2 Jam! Keliling anjungan & berburu sunset</div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="relative pl-6">
+                    <div class="absolute -left-3 top-0 w-6 h-6 bg-gray-200 border-2 border-white rounded-full flex items-center justify-center text-xs">
+                        🌆
+                    </div>
+                    <div class="text-xs font-bold text-gray-500">17.45 - 18.00 WIB</div>
+                    <div class="text-xs font-bold text-gray-800">Kembalikan sepeda & siap-siap pulang</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- RSVP SECTION -->
+        <div class="cute-card rounded-3xl p-6 text-center mb-6">
+            <h3 class="heading-font text-xl text-gray-800 mb-1">Konfirmasi Kehadiran 💖</h3>
+            <p class="text-xs text-gray-500 mb-4">Gimana ganteng, siap meluncur hari Minggu nanti?</p>
+
+            <div class="space-y-3">
+                <button onclick="acceptRSVP('otw')" class="w-full cute-button bg-pastelGreen border-2 border-emerald-300 py-3 rounded-2xl font-bold text-emerald-800 text-xs flex items-center justify-center gap-2">
+                    <span>🚴‍♂️</span> SIAP OTW!
+                </button>
+                <button onclick="acceptRSVP('pasti')" class="w-full cute-button bg-pastelPink border-2 border-pink-300 py-3 rounded-2xl font-bold text-pink-700 text-xs flex items-center justify-center gap-2">
+                    <span>💖</span> PASTI DATANG!
+                </button>
+            </div>
+
+            <div id="rsvpResponse" class="hidden mt-4 p-3 bg-pink-100 border border-pink-300 rounded-2xl text-xs font-bold text-pink-700 animate-pulse">
+            </div>
+        </div>
+
+        <!-- SHARE / ACTION BUTTONS -->
+        <div class="flex gap-3 mb-8">
+            <button onclick="copyInvitationText()" class="flex-1 bg-white border-2 border-pastelRose py-2.5 rounded-2xl font-bold text-xs text-pink-600 shadow-sm hover:bg-pink-50 transition flex items-center justify-center gap-1.5">
+                <span>📋</span> Salin Undangan
+            </button>
+            <button onclick="sendToWhatsApp()" class="flex-1 bg-emerald-500 border-2 border-emerald-600 py-2.5 rounded-2xl font-bold text-xs text-white shadow-sm hover:bg-emerald-600 transition flex items-center justify-center gap-1.5">
+                <span>💬</span> Balas via WA
+            </button>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="text-center text-[11px] text-gray-400 font-bold mb-4">
+            Crafted with ❤ by Hikma for Fazril
+        </div>
+
+    </div>
+
+    <!-- BENTO MENU MODAL -->
+    <div id="menuModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border-4 border-pastelYellow rounded-3xl max-w-xs w-full p-5 relative text-center shadow-2xl">
+            <button onclick="closeMenuModal()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 font-bold text-lg">✕</button>
+
+            <span class="text-4xl mb-2 inline-block animate-bounce">🍱</span>
+            <h3 class="heading-font text-lg text-amber-600 mb-1">Special Bekal Piknik</h3>
+            <p class="text-xs text-gray-400 mb-4">Dibuat khusus penuh cinta sama Hikma 👩‍🍳</p>
+
+            <div class="space-y-2.5 text-left text-xs mb-5">
+                <div class="p-2.5 bg-pastelCream rounded-xl flex items-center gap-2.5 border border-amber-100">
+                    <span class="text-lg">🍱</span>
+                    <div>
+                        <div class="font-bold text-gray-800">Bekal Spesial</div>
+                        <div class="text-gray-500 text-[10px]">Main course lezat buatan Hikma</div>
+                    </div>
+                </div>
+                <div class="p-2.5 bg-pastelCream rounded-xl flex items-center gap-2.5 border border-amber-100">
+                    <span class="text-lg">🍇</span>
+                    <div>
+                        <div class="font-bold text-gray-800">Fresh Fruits</div>
+                        <div class="text-gray-500 text-[10px]">Cemilan buah segar pas piknik</div>
+                    </div>
+                </div>
+                <div class="p-2.5 bg-pastelCream rounded-xl flex items-center gap-2.5 border border-amber-100">
+                    <span class="text-lg">🧃</span>
+                    <div>
+                        <div class="font-bold text-gray-800">Refreshing Drinks</div>
+                        <div class="text-gray-500 text-[10px]">Minuman manis dingin penutup sore</div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="closeMenuModal()" class="w-full cute-button bg-pastelYellow text-amber-900 font-bold py-2 rounded-xl text-xs">
+                Nyammm! Tutup & Simpan 😋
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Floating Heart & Sparkle Background Generator
+        function createFloatingItems() {
+            const container = document.getElementById('floatingBg');
+            const items = ['💖', '🚲', '✨', '🌸', '🧺', '💌', '🌿'];
+            
+            for (let i = 0; i < 16; i++) {
+                const item = document.createElement('div');
+                item.className = 'floating-item';
+                item.innerText = items[Math.floor(Math.random() * items.length)];
+                item.style.left = Math.random() * 100 + 'vw';
+                item.style.animationDuration = (Math.random() * 8 + 6) + 's';
+                item.style.animationDelay = (Math.random() * 5) + 's';
+                item.style.fontSize = (Math.random() * 14 + 14) + 'px';
+                container.appendChild(item);
+            }
+        }
+        createFloatingItems();
+
+        // RSVP Response & Confetti
+        function acceptRSVP(type) {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            const respBox = document.getElementById('rsvpResponse');
+            respBox.classList.remove('hidden');
+
+            if(type === 'otw') {
+                respBox.innerHTML = "YAY! SIAP OTW! Bekal spesialnya udah siap dibikin super enak! 🚴‍♂️💨✨";
+            } else {
+                respBox.innerHTML = "YAAAY! PASTI DATANG! Momen piknik & gowes sore bareng bakal seru bgt! 💖🎉";
+            }
+        }
+
+        // Bento Modal Controls
+        function openMenuModal() {
+            document.getElementById('menuModal').classList.remove('hidden');
+        }
+
+        function closeMenuModal() {
+            document.getElementById('menuModal').classList.add('hidden');
+        }
+
+        // WhatsApp Link Generator
+        function sendToWhatsApp() {
+            const text = encodeURIComponent("Halo Hikma Sayang! Aku udah baca undangannya! Siap OTW hari Minggu jam 13.00 ke TMII buat piknik & gowes sore! 🚲💖");
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        // Clipboard Copy
+        function copyInvitationText() {
+            const copyText = `💕 Romantic Date Invitation for Fazril & Hikma 💕\n\n📍 Lokasi: TMII (Taman Mini Indonesia Indah)\n⏰ Waktu: Minggu, Start 13.00 WIB\n\n🗓️ Rundown:\n- 13.00 - 14.00 WIB: Jalan santai ajaa abis dzuhur biar ga buru buru\n- 14.00 - 14.15 WIB: Fazril & Hikma otw TMII & cari spot adem\n- 14.15 - 15.15 WIB: Picnic Time! Gelar tikar & makan bekal spesial\n- 15.15 - 15.45 WIB: Istirahat, nurunin makanan & Salat Asar\n- 15.45 - 17.45 WIB: Start Gowes 2 Jam! Keliling anjungan & berburu sunset\n- 17.45 - 18.00 WIB: Kembalikan sepeda & siap-siap pulang\n\nGak sabar nunggu hari Minggu! 💖`;
+            
+            const tempInput = document.createElement("textarea");
+            tempInput.value = copyText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            alert("Undangan & Rundown berhasil disalin ke clipboard! Tinggal paste di WA Fazril 💌");
+        }
+
+        // Web Audio API Synthesizer (Lo-Fi Ambience)
+        let audioCtx = null;
+        let isPlaying = false;
+        let timer = null;
+
+        function toggleAudio() {
+            const btn = document.getElementById('musicBtn');
+            if (!isPlaying) {
+                startSynthMusic();
+                isPlaying = true;
+                btn.innerHTML = "<span>⏸️ Pause Vibe</span>";
+                btn.classList.replace('bg-pastelRose', 'bg-emerald-400');
+            } else {
+                stopSynthMusic();
+                isPlaying = false;
+                btn.innerHTML = "<span>▶️ Play Vibe</span>";
+                btn.classList.replace('bg-emerald-400', 'bg-pastelRose');
+            }
+        }
+
+        function startSynthMusic() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            // Soft romantic synth chord scale
+            const notes = [261.63, 329.63, 392.00, 523.25, 440.00, 349.23, 329.63, 392.00];
+            let step = 0;
+
+            timer = setInterval(() => {
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(notes[step % notes.length], audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.9);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.9);
+
+                step++;
+            }, 550);
+        }
+
+        function stopSynthMusic() {
+            if (timer) clearInterval(timer);
+        }
+    </script>
+</body>
+</html>
